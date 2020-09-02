@@ -23,6 +23,7 @@ async function run(): Promise<void> {
     const user = await github.getAuthUser(token)
     core.debug("got github auth user")
 
+    
     const authorEmail = core.getInput('author-email') || user.email()
     const authorName = core.getInput('author-name') || user.name()
 
