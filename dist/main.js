@@ -5294,11 +5294,13 @@ async function run() {
     try {
         await check.mavenCentral();
         await coursier.install();
+        core.info('token');
         const token = check.githubToken();
+        core.info('repo');
         const repo = check.reposFile() || check.githubRepository();
-        core.debug('getting github auth user');
+        core.info('getting github auth user');
         const user = await github.getAuthUser(token);
-        core.debug('got github auth user');
+        core.info('got github auth user');
         const authorEmail = core.getInput('author-email') || user.email();
         const authorName = core.getInput('author-name') || user.name();
         const workspaceDir = await workspace.prepare(repo, token);
