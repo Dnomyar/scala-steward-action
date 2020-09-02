@@ -19,11 +19,10 @@ async function run(): Promise<void> {
     await coursier.install()
     const token = check.githubToken()
     const repo = check.reposFile() || check.githubRepository()
-    core.debug("getting github auth user")
+    core.debug('getting github auth user')
     const user = await github.getAuthUser(token)
-    core.debug("got github auth user")
+    core.debug('got github auth user')
 
-    
     const authorEmail = core.getInput('author-email') || user.email()
     const authorName = core.getInput('author-name') || user.name()
 
